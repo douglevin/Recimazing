@@ -1,0 +1,4 @@
+# Swift Lint Configuration
+
+disabled_rules:
+  - trailing_whitespace
