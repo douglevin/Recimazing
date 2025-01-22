@@ -16,16 +16,18 @@ struct RecipeDetailView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 10) {
-                Text("\(viewModel.recipe.name)")
-                    .font(.title)
                 Text("\(viewModel.recipe.cuisine) Cuisine")
                     .font(.title2)
-                    
+                    .padding(.top, 25)
+                Text("\(viewModel.recipe.name)")
+                    .font(.title)
+                    .multilineTextAlignment(.center)
+                
                 Image(uiImage: viewModel.image)
                     .resizable()
                     .aspectRatio(1, contentMode: .fit)
                     .containerRelativeFrame([.horizontal]) { dimension, _ in
-                        dimension * 0.8
+                        dimension * 0.65
                     }
                     .clipShape(RoundedRectangle(cornerRadius: 8))
                     .padding(.top, 10)
@@ -34,9 +36,10 @@ struct RecipeDetailView: View {
                     Button("View Recipe Website") {
                         showSourceWebView = true
                     }
+                    .accessibilityIdentifier(AccessibilityIdentifiers.RecipeDetailView.websiteButton.description)
                     .font(.title2)
                     .foregroundColor(.blue)
-                    .padding(.top, 20)
+                    .padding(.top, 25)
                     .sheet(isPresented: $showSourceWebView) {
                         ModalWebView(title: viewModel.recipe.name, url: url, isPresented: $showSourceWebView)
                             .presentationDetents([.large])
@@ -48,9 +51,10 @@ struct RecipeDetailView: View {
                     Button("Watch Video") {
                         showVideoWebView = true
                     }
+                    .accessibilityIdentifier(AccessibilityIdentifiers.RecipeDetailView.videoButton.description)
                     .font(.title2)
                     .foregroundColor(.blue)
-                    .padding(.top, 20)
+                    .padding(.top, 25)
                     .sheet(isPresented: $showVideoWebView) {
                         ModalWebView(title: viewModel.recipe.name, url: url, isPresented: $showVideoWebView)
                             .presentationDetents([.large])
@@ -61,6 +65,7 @@ struct RecipeDetailView: View {
             .frame(maxWidth: .infinity)
             .padding(.horizontal)
         }
+        .accessibilityIdentifier(AccessibilityIdentifiers.RecipeDetailView.scrollView.description)
         .scrollIndicators(.hidden)
         .task {
             await viewModel.loadImage()

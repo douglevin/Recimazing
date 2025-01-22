@@ -5,6 +5,7 @@
 //  Created by Doug Levin on 1/20/25.
 //
 
+#warning("remove SwiftLint since it would be considered a 3rd party dependency")
 import Foundation
 
 class AppManager: ObservableObject {

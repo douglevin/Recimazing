@@ -16,12 +16,14 @@ struct ModalWebView: View {
     var body: some View {
         NavigationView {
             WebView(url: url)
+                .accessibilityIdentifier(AccessibilityIdentifiers.ModalWebView.webView.description)
                 .navigationBarTitle(title, displayMode: .inline)
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
                         Button("Done") {
                             isPresented = false
                         }
+                        .accessibilityIdentifier(AccessibilityIdentifiers.ModalWebView.doneButton.description)
                     }
                 }
         }

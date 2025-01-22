@@ -25,6 +25,7 @@ struct RecipeTests {
     init() throws {
         mockContainer = MockContainer.createMockContainer()
         mockContext = try #require(mockContainer.mainContext)
+        
     }
     
     @Test func initializeRequiredProperties() async throws {

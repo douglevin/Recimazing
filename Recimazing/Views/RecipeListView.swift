@@ -12,7 +12,7 @@ struct RecipeListView: View {
     @State private var viewModel: ViewModel
 
     var body: some View {
-        NavigationSplitView {
+        NavigationStack {
             List {
                 if viewModel.recipes.isEmpty {
                     Text("No recipes are available")
@@ -21,14 +21,15 @@ struct RecipeListView: View {
                         .padding()
                 } else {
                     ForEach(viewModel.groupedRecipes.keys.sorted(), id: \.self) { cuisine in
-                        Section(header: Text("\(cuisine) Recipes").font(.headline)) {
+                        Section(header: Text("\(cuisine) Cuisine").font(.headline)) {
                             ForEach(viewModel.groupedRecipes[cuisine] ?? []) { recipe in
-                                RecipeRowView(recipe: recipe)
+                                RecipeRowView(recipe: recipe)                                    
                             }
                         }
                     }
                 }
             }
+            .accessibilityIdentifier(AccessibilityIdentifiers.RecipeListView.list.description)
             .navigationTitle("Recimazing")
             .overlay {
                 if viewModel.isRefreshing && viewModel.recipes.count == 0 {
@@ -44,10 +45,9 @@ struct RecipeListView: View {
                     }, label: {
                         Label("Refresh", systemImage: "arrow.clockwise")
                     })
+                    .accessibilityIdentifier(AccessibilityIdentifiers.RecipeListView.refreshButton.description)
                 }
             }
-        } detail: {
-            Text("Select a recipe")
         }
         .task {
             await viewModel.refreshRecipes()

@@ -21,7 +21,7 @@ public class APICloudClient: BaseCloudClient {
     
     // MARK: Enums
     
-    /// An enum representing the possible errors that can occur within the cloud image client.
+    /// An enum representing the possible errors that can occur within the cloud api client.
     public enum InternalError: Equatable, Error {
         case badResponseData
     }
@@ -83,9 +83,4 @@ public class APICloudClient: BaseCloudClient {
         
         return recipes
     }
-}
-
-/// A `APICloudClient` extension containing any private helpers.
-private extension APICloudClient {
-    
 }
