@@ -118,7 +118,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 213924E72D3F17FF00DF65CB /* Build configuration list for PBXNativeTarget "Recimazing" */;
 			buildPhases = (
-				21BB9ACD2D3F1917008AEC8F /* ShellScript */,
 				213924BD2D3F17FE00DF65CB /* Sources */,
 				213924BE2D3F17FE00DF65CB /* Frameworks */,
 				213924BF2D3F17FE00DF65CB /* Resources */,
@@ -251,27 +250,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		21BB9ACD2D3F1917008AEC8F /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		213924BD2D3F17FE00DF65CB /* Sources */ = {
